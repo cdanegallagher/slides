@@ -1,0 +1,80 @@
+---
+title       : Diamond Appraiser 
+subtitle    : A Slidify Presentation
+author      : CG
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Introduction
+
+What is Diamond Appraiser?
+
+1. A web based program that predict the price of diamonds.
+
+2. Uses a linear model to predict prices.
+
+3. User inputs values to apply to model
+
+--- .class #id 
+
+
+
+## User input
+
+What is the prediction based on?
+
+User input values:
+
+1. Carat
+2. Cut
+3. Clarity
+4. Color
+
+--- .class #id 
+
+## Strengths
+
+1. Model is very interpretable:
+
+  -A table of coefficients, t-scores, and p-values is provided
+
+2. Model makes accurate predictions for the average diamond
+
+  -Correlation Coefficient=.9
+
+--- .class #id 
+
+## Weaknesses
+
+1. Model does not accurately access lower-end diamonds:
+
+  -Some diamonds may be assessed to have a negative price.
+  
+2. Model is overly biased
+
+--- .class #id 
+
+## Demo
+
+```{r}
+
+library(ggplot2)
+data(diamonds)
+fit=lm(price~carat+cut+color+clarity,data=diamonds)
+predict(fit,data.frame(carat=1,cut="Good",color="G",clarity="IF"))
+
+```
+
+
+
+
+
+
+
+
